@@ -1146,7 +1146,10 @@
                     <a href="#tocS_SharedAutomatedTellerMachinesServices" class="toc-h2 toc-link" data-title="SharedAutomatedTellerMachinesServices">SharedAutomatedTellerMachinesServices</a>
                   </li>
                   <li>
-                    <a href="#tocS_StatementAccount" class="toc-h2 toc-link" data-title="StatementAccount">StatementAccount</a>
+                    <a href="#tocS_StatementAccountBalance" class="toc-h2 toc-link" data-title="StatementAccountBalance">StatementAccountBalance</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_StatementAccountTransaction" class="toc-h2 toc-link" data-title="StatementAccountTransaction">StatementAccountTransaction</a>
                   </li>
                   <li>
                     <a href="#tocS_Status" class="toc-h2 toc-link" data-title="Status">Status</a>
@@ -10890,42 +10893,29 @@ This operation does not require authentication
 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa da Organização A"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"completedTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAQUE"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="nl">"authorisedPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAQUE"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60701190"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6272"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24550"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21128159000166"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"statementAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"completedAuthorisedPaymentIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACAO_EFETIVADA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferência"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.54</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GSOKS74631"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RHGTJ37417"</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -12143,7 +12133,7 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>statementAccount</td>
-<td>[<a href="#schemastatementaccount">StatementAccount</a>]</td>
+<td>[<a href="#schemastatementaccountbalance">StatementAccountBalance</a>]</td>
 <td>true</td>
 <td>Lista os saldos referentes às contas de: depósito à vista, poupança ou de pagamento pré-paga</td>
 </tr>
@@ -21818,7 +21808,7 @@ This operation does not require authentication
 <a id="tocSenumtransactiontypes"></a>
 <a id="tocsenumtransactiontypes"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"transactionTypes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAQUE"</span><span class="w">
+  </span><span class="nl">"transactionTypes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='schemas-limites-referentes-ao-valor-das-operacoes-de-credito-propriedades'>Propriedades</h3>
@@ -21846,6 +21836,34 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>transactionTypes</td>
+<td>TED</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>DIC</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>PIX</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>TRANSFERENCIA_MESMA_INSTITUICAO</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>BOLETO</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>CONVENIO</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>ARRECADACAO</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
 <td>PACOTE_TARIFA_SERVICOS</td>
 </tr>
 <tr>
@@ -21858,19 +21876,15 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>transactionTypes</td>
+<td>DEPOSITO</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
 <td>SAQUE</td>
 </tr>
 <tr>
 <td>transactionTypes</td>
-<td>CARTAO_DEBITO</td>
-</tr>
-<tr>
-<td>transactionTypes</td>
-<td>CARTAO_PRE_PAGO</td>
-</tr>
-<tr>
-<td>transactionTypes</td>
-<td>DEPOSITO</td>
+<td>CARTAO</td>
 </tr>
 <tr>
 <td>transactionTypes</td>
@@ -21878,7 +21892,15 @@ This operation does not require authentication
 </tr>
 <tr>
 <td>transactionTypes</td>
-<td>RENDIMENTOS</td>
+<td>RENDIMENTO</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>DEBITO_APLICACAO_AUTOMATICA</td>
+</tr>
+<tr>
+<td>transactionTypes</td>
+<td>OUTRO</td>
 </tr>
 </tbody></table>
 
@@ -24062,13 +24084,13 @@ This operation does not require authentication
 </thead><tbody>
 <tr>
 <td>requestDateTime</td>
-<td><a href="#schematransactions/properties/updatedatetime/allof/0">Transactions/properties/updateDateTime/allOf/0</a></td>
+<td><a href="#schemaoverdraftlimits/properties/updatedatetime/allof/0">OverdraftLimits/properties/updateDateTime/allOf/0</a></td>
 <td>true</td>
 <td>Data e hora da consulta, conforme especificação RFC-3339, formato UTC.</td>
 </tr>
 <tr>
 <td>updateDateTime</td>
-<td><a href="#schematransactions/properties/updatedatetime/allof/0">Transactions/properties/updateDateTime/allOf/0</a></td>
+<td>string</td>
 <td>true</td>
 <td>Data e hora da atualização, conforme especificação RFC-3339.</td>
 </tr>
@@ -29553,42 +29575,29 @@ This operation does not require authentication
 <a id="tocsresponseaccounttransactions"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"companies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empresa da Organização A"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"cnpjNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50685362000135"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"completedTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAQUE"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="nl">"authorisedPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAQUE"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-                  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-              </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60701190"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6272"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24550"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21128159000166"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"statementAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"completedAuthorisedPaymentIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACAO_EFETIVADA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferência"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.54</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GSOKS74631"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RHGTJ37417"</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -29620,46 +29629,16 @@ This operation does not require authentication
 <td></td>
 </tr>
 <tr>
-<td>» brand</td>
+<td>» account</td>
 <td>object</td>
 <td>true</td>
-<td>Objeto que define a Organização controladora do grupo de instituições financeiras</td>
+<td>Conjunto de informações das Contas de: depósito à vista, poupança e de pagamento pré-paga</td>
 </tr>
 <tr>
-<td>»» name</td>
-<td>string</td>
-<td>true</td>
-<td>Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a &#39;marca&#39; é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes.</td>
-</tr>
-<tr>
-<td>»» companies</td>
-<td>[object]</td>
-<td>true</td>
-<td>Companies traz uma lista de todas as instituições da Marca.</td>
-</tr>
-<tr>
-<td>»»» name</td>
-<td>string</td>
-<td>true</td>
-<td>Nome da Instituição, pertencente à marca, responsável pela modalidade de Empréstimos.</td>
-</tr>
-<tr>
-<td>»»» cnpjNumber</td>
-<td>string</td>
-<td>true</td>
-<td>Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica. Deve-se ter apenas os números do CNPJ, sem máscara</td>
-</tr>
-<tr>
-<td>»»» accounts</td>
-<td>object</td>
-<td>true</td>
-<td></td>
-</tr>
-<tr>
-<td>»»»» transactions</td>
+<td>»» transactions</td>
 <td><a href="#schematransactions">Transactions</a></td>
 <td>true</td>
-<td>Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas</td>
+<td>Conjunto de informações relativas às Transações de crédito e débito realizadas e de pagamento autorizado para  Contas de: depósito à vista, poupança e de pagamento pré-paga</td>
 </tr>
 <tr>
 <td>links</td>
@@ -37734,12 +37713,12 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h2 id="tocS_StatementAccount">StatementAccount</h2>
+<h2 id="tocS_StatementAccountBalance">StatementAccountBalance</h2>
 
-<p><a id="schemastatementaccount"></a>
-<a id="schema_StatementAccount"></a>
-<a id="tocSstatementaccount"></a>
-<a id="tocsstatementaccount"></a></p>
+<p><a id="schemastatementaccountbalance"></a>
+<a id="schema_StatementAccountBalance"></a>
+<a id="tocSstatementaccountbalance"></a>
+<a id="tocsstatementaccountbalance"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SALDO_DISPONIVEL"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">800.87</span><span class="w">
@@ -37768,12 +37747,112 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
+<h2 id="tocS_StatementAccountTransaction">StatementAccountTransaction</h2>
+
+<p><a id="schemastatementaccounttransaction"></a>
+<a id="schema_StatementAccountTransaction"></a>
+<a id="tocSstatementaccounttransaction"></a>
+<a id="tocsstatementaccounttransaction"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"completedAuthorisedPaymentIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACAO_EFETIVADA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferência"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.54</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GSOKS74631"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RHGTJ37417"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+
+<p>Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas</p>
+
+<h3 id='schemas-limites-referentes-ao-valor-das-operacoes-de-credito-propriedades'>Propriedades</h3>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completedAuthorisedPaymentIndicator</td>
+<td>string</td>
+<td>true</td>
+<td>Indicador da transação</td>
+</tr>
+<tr>
+<td>creditDebitIndicator</td>
+<td><a href="#schemaenumcreditdebitindicator/properties/creditdebitindicator">EnumCreditDebitIndicator/properties/creditDebitIndicator</a></td>
+<td>true</td>
+<td>Indicador do tipo de lançamento: a crédito ou a débito.</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#schemaenumtransactiontypes/properties/transactiontypes">EnumTransactionTypes/properties/transactionTypes</a></td>
+<td>true</td>
+<td>Tipo de Transação</td>
+</tr>
+<tr>
+<td>additionalInfo</td>
+<td>string</td>
+<td>true</td>
+<td>&#39;Campo livre, de preenchimento obrigatório para complementar informação, quando selecionado o tipo de transação: OUTRO&#39;</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>number¦null</td>
+<td>true</td>
+<td>Valor do Saldo disponível, representado em valor monetário com 2 casas decimais. O tipo SALDO_DISPONIVEL admite valor negativo.</td>
+</tr>
+<tr>
+<td>transactionDate</td>
+<td>string</td>
+<td>true</td>
+<td>&#39;Se indicador de transação:<br> TRANSACAO_EFETIVADA - corresponde a data de lançamento da transação<br> PAGAMENTO_AUTORIZADO - corresponde a data prevista de efetivação da transação&#39;</td>
+</tr>
+<tr>
+<td>payer</td>
+<td>string</td>
+<td>true</td>
+<td>&#39;Identificação do Pagador da transação&#39;</td>
+</tr>
+<tr>
+<td>payee</td>
+<td>string</td>
+<td>true</td>
+<td>&#39;Identificação do Recebedor da transação&#39;</td>
+</tr>
+</tbody></table>
+
+<h4 id='schemas-limites-referentes-ao-valor-das-operacoes-de-credito-propriedades-enumerated-values'>Enumerated Values</h4>
+
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Código</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completedAuthorisedPaymentIndicator</td>
+<td>TRANSACAO_EFETIVADA</td>
+</tr>
+<tr>
+<td>completedAuthorisedPaymentIndicator</td>
+<td>PAGAMENTO_AUTORIZADO</td>
+</tr>
+</tbody></table>
+
 <h2 id="tocS_Status">Status</h2>
 
 <p><a id="schemastatus"></a>
 <a id="schema_Status"></a>
 <a id="tocSstatus"></a>
 <a id="tocsstatus"></a></p>
+
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retorno com Sucesso"</span><span class="p">,</span><span class="w">
@@ -37863,35 +37942,31 @@ This operation does not require authentication
 <a id="tocStransactions"></a>
 <a id="tocstransactions"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ispbCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60701190"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"branchCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6272"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24550"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"checkDigit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"brandName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organização A"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"companyCnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21128159000166"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"requestDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updateDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-21T08:30:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"completedTransactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"statementAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"completedAuthorisedPaymentIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRANSACAO_EFETIVADA"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAQUE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"authorisedPayments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"creditDebitIndicator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDITO"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAQUE"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIX"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"additionalInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transferência"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">500.54</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transactionDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"payer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GSOKS74631"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"payee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RHGTJ37417"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
 
-<p>Agrupador das informações relativas às Transações de crédito e débito realizadas e autorizadas</p>
+<p>Conjunto de informações relativas às Transações de crédito e débito realizadas e de pagamento autorizado para  Contas de: depósito à vista, poupança e de pagamento pré-paga</p>
 
 <h3 id='schemas-limites-referentes-ao-valor-das-operacoes-de-credito-propriedades'>Propriedades</h3>
 
@@ -37904,112 +37979,58 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
+<td>ispbCode</td>
+<td>string</td>
+<td>true</td>
+<td>Código da Instituição financeira. <br>ISPB: Identificador do participante junto ao Banco Central para o Sistema de Pagamentos Brasileiro – código identificador atribuído a todos os participantes do Sistema de Transferência de Reservas (STR) do Banco Central do Brasil</td>
+</tr>
+<tr>
+<td>branchCode</td>
+<td>string</td>
+<td>true</td>
+<td>Código da Agência detentora da conta</td>
+</tr>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Número da conta</td>
+</tr>
+<tr>
+<td>checkDigit</td>
+<td>string</td>
+<td>true</td>
+<td>Dígito da conta</td>
+</tr>
+<tr>
+<td>brandName</td>
+<td>string</td>
+<td>true</td>
+<td>&#39;Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a &#39;marca&#39; é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes&#39;</td>
+</tr>
+<tr>
+<td>companyCnpj</td>
+<td>string</td>
+<td>true</td>
+<td>&#39;Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica. Deve-se ter apenas os números do CNPJ, sem máscara&#39;</td>
+</tr>
+<tr>
 <td>requestDateTime</td>
-<td><a href="#schematransactions/properties/updatedatetime/allof/0">Transactions/properties/updateDateTime/allOf/0</a></td>
+<td>string</td>
 <td>true</td>
 <td>Data e hora da consulta, conforme especificação RFC-3339, formato UTC.</td>
 </tr>
 <tr>
-<td>updateDateTime</td>
-<td>string</td>
-<td>true</td>
-<td>Data e hora da atualização, conforme especificação RFC-3339.</td>
-</tr>
-<tr>
-<td>completedTransactions</td>
-<td>[object]</td>
-<td>true</td>
-<td>Lista das transações a débito e a crédito efetivadas em conta.</td>
-</tr>
-<tr>
-<td>» creditDebitIndicator</td>
-<td><a href="#schemaenumcreditdebitindicator/properties/creditdebitindicator">EnumCreditDebitIndicator/properties/creditDebitIndicator</a></td>
-<td>true</td>
-<td>Indicador do tipo de lançamento: a crédito ou a débito.</td>
-</tr>
-<tr>
-<td>» type</td>
-<td><a href="#schemaenumtransactiontypes/properties/transactiontypes">EnumTransactionTypes/properties/transactionTypes</a></td>
-<td>true</td>
-<td>Tipo de Transação</td>
-</tr>
-<tr>
-<td>» amount</td>
-<td>number¦null</td>
-<td>true</td>
-<td>Valor da transação. Expressa em valor monetário com 2 casas decimais</td>
-</tr>
-<tr>
-<td>» currency</td>
+<td>currency</td>
 <td><a href="#schemacurrency">Currency</a></td>
-<td>false</td>
+<td>true</td>
 <td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
 </tr>
 <tr>
-<td>» transactionDate</td>
-<td>string</td>
+<td>statementAccount</td>
+<td>[<a href="#schemastatementaccounttransaction">StatementAccountTransaction</a>]</td>
 <td>true</td>
-<td>Data de lançamento da transação</td>
-</tr>
-<tr>
-<td>» payer</td>
-<td>string</td>
-<td>true</td>
-<td>Identificação do Pagador da transação</td>
-</tr>
-<tr>
-<td>» payee</td>
-<td>string</td>
-<td>true</td>
-<td>Identificação do Recebedor da transação</td>
-</tr>
-<tr>
-<td>authorisedPayments</td>
-<td>[object]</td>
-<td>true</td>
-<td>Lista das Informações relativas aos pagamentos autorizados.</td>
-</tr>
-<tr>
-<td>» creditDebitIndicator</td>
-<td><a href="#schemaenumcreditdebitindicator/properties/creditdebitindicator">EnumCreditDebitIndicator/properties/creditDebitIndicator</a></td>
-<td>true</td>
-<td>Indicador do tipo de lançamento: a crédito ou a débito.</td>
-</tr>
-<tr>
-<td>» type</td>
-<td><a href="#schemaenumtransactiontypes/properties/transactiontypes">EnumTransactionTypes/properties/transactionTypes</a></td>
-<td>true</td>
-<td>Tipo de Transação</td>
-</tr>
-<tr>
-<td>» amount</td>
-<td>number¦null</td>
-<td>true</td>
-<td>Valor da transação. Expressa em valor monetário com 2 casas decimais</td>
-</tr>
-<tr>
-<td>» currency</td>
-<td><a href="#schemacurrency">Currency</a></td>
-<td>false</td>
-<td>Moeda referente ao valor mínimo da Tarifa, segundo modelo ISO-4217</td>
-</tr>
-<tr>
-<td>» transactionDate</td>
-<td>string</td>
-<td>true</td>
-<td>Data de lançamento da transação</td>
-</tr>
-<tr>
-<td>» payer</td>
-<td>string</td>
-<td>true</td>
-<td>Identificação do Pagador da transação</td>
-</tr>
-<tr>
-<td>» payee</td>
-<td>string</td>
-<td>true</td>
-<td>Identificação do Recebedor da transação</td>
+<td>Lista dos lançamentos referentes às transações realizadas e de pagamento autorizado para as contas de: depósito à vista, poupança e de pagamento pré-paga</td>
 </tr>
 </tbody></table>
 
