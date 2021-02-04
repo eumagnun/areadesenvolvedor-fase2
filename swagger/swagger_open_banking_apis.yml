@@ -10404,14 +10404,6 @@ components:
           items:
             $ref: '#/components/schemas/SharedAutomatedTellerMachinesCompany'
           description: Lista de instituições pertencentes à marca
-    SharedAutomatedTellerMachinesCompanies:
-      properties:
-        sharedAutomatedTellerMachines:
-          type: array
-          items:
-            $ref: '#/components/schemas/SharedAutomatedTellerMachines'
-      allOf:
-        - $ref: '#/components/schemas/SharedAutomatedTellerMachinesCompany'
     SharedAutomatedTellerMachinesCompany:
       type: object
       properties:
