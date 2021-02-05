@@ -804,16 +804,15 @@ paths:
 
         Esta especificação inclui todos os itens relevantes que permitam a ação e o efeito de identificar de forma única a pessoa natural através de seus dados cadastrais.
 
-        Tags: .
 
         ### Visão de alto de nível das estruturas de dados
 
-        <img class="lazy" src="images/loading.gif" data-src="images/tld/.png"/>
+        <img class="lazy" src="images/loading.gif" data-src="images/tld/customers/TLD_Personal_Customers_Identification_v2.png"/>
 
 
         ### Dicionário de dados
 
-        <a href="dictionary/.csv" target="_blank">Fazer download do dicionário de dados</a>
+        <a href="dictionary/personal_customers_identification.csv" target="_blank">Fazer download do dicionário de dados</a>
 
 
         ### Especificação em OAS 3.0
@@ -846,16 +845,15 @@ paths:
 
         Esta especificação inclui todos os itens relevantes que permitam a ação e o efeito de identificar de forma única a pessoa jurídica através de seus dados cadastrais.
 
-        Tags: .
 
         ### Visão de alto de nível das estruturas de dados
 
-        <img class="lazy" src="images/loading.gif" data-src="images/tld/.png"/>
+        <img class="lazy" src="images/loading.gif" data-src="images/tld/customers/TLD_Business_Customers_Identification_v2.png"/>
 
 
         ### Dicionário de dados
 
-        <a href="dictionary/.csv" target="_blank">Fazer download do dicionário de dados</a>
+        <a href="dictionary/business_customers_identification.csv" target="_blank">Fazer download do dicionário de dados</a>
 
 
         ### Especificação em OAS 3.0
@@ -888,16 +886,15 @@ paths:
 
         Esta especificação inclui todos os itens relevantes que permitam as instituições apreciar, avaliar, caracterizar e classificar o cliente com a finalidade de conhecer o seu perfil de risco e sua capacidade econômico-financeira.
 
-        Tags: .
 
         ### Visão de alto de nível das estruturas de dados
 
-        <img class="lazy" src="images/loading.gif" data-src="images/tld/.png"/>
+        <img class="lazy" src="images/loading.gif" data-src="images/tld/customers/TLD_Personal_Customers_Qualification_v2.png"/>
 
 
         ### Dicionário de dados
 
-        <a href="dictionary/.csv" target="_blank">Fazer download do dicionário de dados</a>
+        <a href="dictionary/personal_customers_qualification.csv" target="_blank">Fazer download do dicionário de dados</a>
 
 
         ### Especificação em OAS 3.0
@@ -930,16 +927,15 @@ paths:
 
         Esta especificação inclui todos os itens relevantes que permitam as instituições apreciar, avaliar, caracterizar e classificar o cliente com a finalidade de conhecer o seu perfil de risco e sua capacidade econômico-financeira.
 
-        Tags: .
 
         ### Visão de alto de nível das estruturas de dados
 
-        <img class="lazy" src="images/loading.gif" data-src="images/tld/.png"/>
+        <img class="lazy" src="images/loading.gif" data-src="images/tld/customers/TLD_Business_Customers_Qualification_v2.png"/>
 
 
         ### Dicionário de dados
 
-        <a href="dictionary/.csv" target="_blank">Fazer download do dicionário de dados</a>
+        <a href="dictionary/business_customers_qualification.csv" target="_blank">Fazer download do dicionário de dados</a>
 
 
         ### Especificação em OAS 3.0
@@ -956,6 +952,84 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseBusinessCustomersQualification'
+  /customers/v1/personal-financial-relation:
+    get:
+      tags:
+        - API - Customers
+      summary: Relacionamento Pessoa Natural
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém dados relativos ao processo de relacionamento pessoa natural
+
+
+        ### Visão de alto de nível das estruturas de dados
+
+        <img class="lazy" src="images/loading.gif" data-src="images/tld/customers/TLD_Personal_Customers_Financial_Relation_v2.png"/>
+
+
+        ### Dicionário de dados
+
+        <a href="dictionary/personal_customers_financial_relation.csv" target="_blank">Fazer download do dicionário de dados</a>
+
+
+        ### Especificação em OAS 3.0
+
+        <a href="swagger/swagger_customers_apis.yaml">Download da Especificação (OAS 3.0)</a>
+      operationId: getPersonalFinancialRelation
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Dados cadastrais sobre relacionamento pessoa natural obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePersonalCustomersFinancialRelation'
+  /customers/v1/business-financial-relation:
+    get:
+      tags:
+        - API - Customers
+      summary: Relacionamento Pessoa Jurídica
+      description: |
+        |Versão|
+        |:-----|
+        |1     |
+
+        ### Visão Geral
+
+        Obtém dados relativos ao processo de relacionamento pessoa jurídica
+
+
+        ### Visão de alto de nível das estruturas de dados
+
+        <img class="lazy" src="images/loading.gif" data-src="images/tld/customers/TLD_Business_Customers_Financial_Relation_v2.png"/>
+
+
+        ### Dicionário de dados
+
+        <a href="dictionary/business_customers_financial_relation.csv" target="_blank">Fazer download do dicionário de dados</a>
+
+
+        ### Especificação em OAS 3.0
+
+        <a href="swagger/swagger_customers_apis.yaml">Download da Especificação (OAS 3.0)</a>
+      operationId: getBusinessFinancialRelation
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: Dados cadastrais sobre relacionamento pessoa jurídica obtidos com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBusinessCustomersFinancialRelation'
   /accounts/v1/identification:
     get:
       tags:
@@ -2401,33 +2475,56 @@ components:
           items:
             $ref: '#/components/schemas/BusinessCreditCard'
           minItems: 1
-    BusinessCustomers:
+    BusinessFinancialRelationBrand:
+      type: object
+      description: Objeto que define a Organização controladora do grupo de instituições financeiras
+      required:
+        - name
+        - companies
+      properties:
+        name:
+          type: string
+          pattern: \w*\W*
+          maxLength: 80
+          description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes'
+          example: Organização A
+        companies:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessFinancialRelationCompany'
+          minItems: 1
+          description: Companies traz uma lista de todas as instituições da Marca
+    BusinessFinancialRelationCompany:
       type: object
       required:
-        - companies
-        - financialRelation
+        - name
+        - cnpjNumber
+        - businessCustomers
       properties:
-        companies:
-          required:
-            - name
-            - cnpjNumber
-            - financialRelation
-          type: object
-          properties:
-            name:
-              type: string
-              maxLength: 80
-              pattern: \w*\W*
-              description: Nome da marca selecionada pela Organização
-              example: Organização A
-            cnpjNumber:
-              type: string
-              maxLength: 14
-              pattern: '\d{14}|^NA$'
-              description: Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.
-              example: 00.000.000/0001-00
-            financialRelation:
-              $ref: '#/components/schemas/PersonalCustomer/properties/companies/properties/financialRelation'
+        name:
+          type: string
+          maxLength: 80
+          pattern: \w*\W*
+          description: Nome da marca selecionada pela Organização
+          example: Organização A
+        cnpjNumber:
+          type: string
+          maxLength: 14
+          pattern: '\d{14}|^NA$'
+          description: Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.
+          example: '00000000000100'
+        businessCustomers:
+          $ref: '#/components/schemas/BusinessFinancialRelationCustomers'
+    BusinessFinancialRelationCustomers:
+      type: array
+      description: 'Conjunto de informações relativas ao processo de Relacionamento. Considera-se relacionamento as informações que permitam conhecer desde quando a pessoa consultada é cliente da instituição, bem como um indicador dos produtos e serviços que ela consome atualmente'
+      items:
+        type: object
+        required:
+          - financialRelation
+        properties:
+          financialRelation:
+            $ref: '#/components/schemas/FinancialRelation'
     BusinessFinancing:
       type: object
       required:
@@ -2539,14 +2636,14 @@ components:
         - services
     BusinessIdentification:
       type: object
-      description: Objeto agrupador das informações relativas a Identificação ou seja a ação e o efeito de identificar de forma única a pessoa jurídica através de seus dados cadastrais
+      description: Conjunto de informações relativas a Identificação ou seja a ação e o efeito de identificar de forma única a pessoa jurídica através de seus dados cadastrais
       required:
         - requestDateTime
         - updateDateTime
         - cnpjNumber
         - otherDocuments
         - companyName
-        - partiesParticipation
+        - parties
         - contacts
       properties:
         requestDateTime:
@@ -2586,11 +2683,11 @@ components:
         incorporationDate:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-          x-cds-type: DateString
+          format: DateString
           maxLength: 10
           description: 'Data de constituição da empresa, conforme especificação RFC-3339.'
           example: '2014-03-19'
-        partiesParticipation:
+        parties:
           type: array
           items:
             $ref: '#/components/schemas/PartiesParticipation'
@@ -2637,19 +2734,11 @@ components:
           pattern: '^(\d{14})$|^NA$'
           maxLength: 14
           example: '50685362000135'
-        urlComplementaryList:
-          description: |
-            URL do link que conterá a lista complementar com os nomes e CNPJs agrupados sob o mesmo cnpjNumber. Os contidos nessa lista possuem as mesmas características para produtos e serviços. Endereço eletrônico de acesso ao canal. Será obrigatoriamente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada.
-            Restrição: Será obrigatorimente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada
-          type: string
-          pattern: \w*\W*
-          maxLength: 1024
-          example: 'https://empresadaorganizacaoa.com/complementarylist'
         businessCustomers:
           $ref: '#/components/schemas/BusinessIdentificationCustomers'
     BusinessIdentificationCustomers:
       type: object
-      description: Objeto que agrupa as informações Cadastrais do Cliente Pessoa jurídica
+      description: Conjunto de informações Cadastrais do Cliente Pessoa jurídica
       required:
         - identification
       properties:
@@ -2659,15 +2748,28 @@ components:
       type: object
       description: Objeto que agrupa informações relativas ao patrimônio da empresa
       required:
+        - amount
         - date
-      allOf:
-        - $ref: '#/components/schemas/InformedPatrimony'
       properties:
+        amount:
+          type: string
+          description: |
+            Valor do patrimônio informado. Expresso em valor monetário com 2 casas decimais.
+            "Patrimônio é o conjunto de bens vinculado a uma pessoa ou a uma entidade".
+          maxLength: 12
+          pattern: '^((\d{1,9}\.\d{2}){1}|NA)$'
+        currency:
+          type: string
+          pattern: '^(\w{3}){1}$'
+          maxLength: 3
+          format: CurrencyString
+          description: 'Moeda referente ao valor do patrimônio, segundo modelo ISO-4217.'
+          example: BRL
         date:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
           maxLength: 10
-          x-cds-type: DateString
+          format: DateString
           description: 'Data do Patrimônio, conforme especificação RFC-3339.'
           example: '2014-03-19'
     BusinessInvoiceFinancings:
@@ -2934,7 +3036,7 @@ components:
         expirationDate:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-          x-cds-type: DateString
+          format: DateString
           maxLength: 10
           description: 'Data de validade do documento informado, conforme especificação RFC-3339.'
           example: '2014-03-19'
@@ -2947,7 +3049,6 @@ components:
         - economicActivity
         - informedRevenue
         - informedPatrimony
-        - occupation
       properties:
         requestDateTime:
           type: string
@@ -2991,7 +3092,7 @@ components:
       required:
         - name
         - cnpjNumber
-        - personalLoans
+        - businessCustomers
       properties:
         name:
           description: 'Nome da Instituição, pertencente à Marca, responsável pelo Cadastro.'
@@ -3005,15 +3106,7 @@ components:
           pattern: '^(\d{14})$|^NA$'
           maxLength: 14
           example: '50685362000135'
-        urlComplementaryList:
-          description: |
-            URL do link que conterá a lista complementar com os nomes e CNPJs agrupados sob o mesmo cnpjNumber. Os contidos nessa lista possuem as mesmas características para produtos e serviços. Endereço eletrônico de acesso ao canal. Será obrigatoriamente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada.
-            Restrição: Será obrigatorimente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada
-          type: string
-          pattern: \w*\W*
-          maxLength: 1024
-          example: 'https://empresadaorganizacaoa.com/complementarylist'
-        personalCustomers:
+        businessCustomers:
           $ref: '#/components/schemas/BusinessQualificationCustomers'
     BusinessQualificationCustomers:
       type: object
@@ -3107,6 +3200,216 @@ components:
           minItems: 1
           maxItems: 31
           description: Lista das Tarifas cobradas sobre Serviços Prioritários
+    CreditCardAccountsLimits:
+      type: object
+      required:
+        - name
+        - companies
+      properties:
+        name:
+          type: string
+          pattern: \w*\W*
+          description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes'
+          maxLenght: 80
+        companies:
+          type: array
+          description: Companies traz uma lista de todas as instituições da Marca
+          items:
+            required:
+              - name
+              - cnpjNumber
+              - creditCardAccounts
+            properties:
+              name:
+                type: string
+                pattern: \w*\W*
+                description: 'Nome da Instituição, pertencente à Marca, responsável pelo Cadastro.'
+                maxLenght: 80
+                example: Empresa da Organização A
+              cnpjNumber:
+                type: string
+                maxLength: 14
+                pattern: '\d{14}|^NA$'
+                description: Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.
+                example: 00.000.000/0001-00
+              creditCardAccounts:
+                type: object
+                description: Conjunto de informações de conta de pagamento pós-paga.
+                required:
+                  - limits
+                properties:
+                  limits:
+                    type: object
+                    description: Conjunto de informações referentes aos limites da conta de  pagamento pós-paga.
+                    required:
+                      - requestDateTime
+                      - updateDateTime
+                    properties:
+                      requestDateTime:
+                        type: string
+                        pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+                        description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
+                        maxLenght: 20
+                        example: '2020-07-21T08:30:00Z'
+                      updateDateTime:
+                        type: string
+                        pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+                        description: 'Data e hora da atualização do bloco de Relacionamento, conforme especificação RFC-3339, formato UTC.'
+                        maxLenght: 20
+                        example: '2020-07-21T08:30:00Z'
+                      currency:
+                        type: string
+                        description: 'Moeda referente ao valor da transação, segundo modelo ISO-4217.'
+                        example: BRL
+                      statementCreditCardAccounts:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CreditCardAccountsStatement'
+    CreditCardAccountsStatement:
+      type: object
+      description: Lista dos lançamentos referentes aos limites relativos à conta de  pagamento pós-paga
+      required:
+        - creditLimitsLinesIndicator
+        - consolidationIndicator
+        - balances
+      properties:
+        creditLimitsLinesIndicator:
+          $ref: '#/components/schemas/EnumCreditCardAccountsLimitsLinesIndicator/properties/liminitsLineIndicator'
+        consildationIndicator:
+          $ref: '#/components/schemas/EnumCreditCardAccountsConsolidationIndicator/properties/consolidationIndicator'
+        limitIndicator:
+          $ref: '#/components/schemas/EnumCreditCardAccountsLimitIndicator/properties/limitIndicator'
+        nameLine:
+          type: object
+          properties:
+            nameLine:
+              $ref: '#/components/schemas/EnumCreditCardAccountsNameLine/properties/nameLine'
+            additionalInfo:
+              type: string
+              pattern: \w*\W*
+              description: Campo de preenchimento obrigatório se selecionada a opção 'OUTRAS' em nameLine
+              maxLenght: 50
+        balances:
+          type: array
+          description: Lista que traz os valores relativos aos saldos do Limite de crédito total da conta de pagamento pós-paga
+          items:
+            type: object
+            required:
+              - type
+              - amount
+            properties:
+              type:
+                type: string
+                description: Traz os tipos dos valores relativos aos saldos  do Limite de crédito total da conta de pagamento pós-paga.
+                enum:
+                  - VALOR_TOTAL
+                  - VALOR_UTILIZADO
+                  - VALOR_DISPONIVEL
+                example: VALOR_TOTAL
+              amount:
+                type: number
+                description: 'Valor do limite de crédito informado (total ou por modalidade), relativo ao tipo selecionado. Expresso em valor monetário com 2 casas decimais'
+                maxLenght: 12
+                nullable: true
+    CreditCardsAccountIdentification:
+      type: object
+      description: Conjunto de informações referentes à identificação da conta de pagamento pós-paga
+      required:
+        - name
+        - companies
+      properties:
+        name:
+          type: string
+          pattern: \w*\W*
+          description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes'
+          maxLenght: 80
+        companies:
+          type: object
+          description: Companies traz uma lista de todas as instituições da Marca
+          required:
+            - name
+            - cnpjNumber
+            - creditCardAccounts
+          properties:
+            name:
+              type: string
+              pattern: \w*\W*
+              description: 'Nome da Instituição, pertencente à Marca, responsável pelo Cadastro.'
+              maxLenght: 80
+              example: Empresa da Organização A
+            cnpjNumber:
+              type: string
+              maxLength: 14
+              pattern: '\d{14}|^NA$'
+              description: Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.
+              example: 00.000.000/0001-00
+            creditCardAccounts:
+              type: object
+              description: Conjunto de informações de conta de pagamento pós-paga
+              required:
+                - requestDateTime
+                - updateDateTime
+                - name
+                - type
+                - network
+                - paymentMethod
+              properties:
+                requestDateTime:
+                  type: string
+                  pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+                  description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
+                  maxLenght: 20
+                  example: '2020-07-21T08:30:00Z'
+                updateDateTime:
+                  type: string
+                  pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+                  description: 'Data e hora da atualização do bloco de Relacionamento, conforme especificação RFC-3339, formato UTC.'
+                  maxLenght: 20
+                  example: '2020-07-21T08:30:00Z'
+                name:
+                  type: string
+                  pattern: \w*\W*
+                  description: |
+                    Denominação/Identificação do nome da conta de pagamento pós-paga (cartão). Conforme CIRCULAR Nº 3.680,BCB, 2013: 'conta de pagamento pós-paga: destinada à execução de transações de pagamento que independem do aporte prévio de recursos'
+                  maxLenght: 50
+                  example: Cartão Universitário Bem-Vindo
+                type:
+                  $ref: '#/components/schemas/EnumCreditCardAccountsType/properties/accountsType'
+                additionalInfo:
+                  type: string
+                  pattern: \w*\W*
+                  description: Texto livre para especificar categoria de bandeira marcada como 'OUTRAS'
+                  maxLenght: 50
+                network:
+                  type: object
+                  properties:
+                    network:
+                      $ref: '#/components/schemas/EnumCreditCardAccountNetwork/properties/network'
+                    additionalInfo:
+                      type: string
+                      pattern: \w*\W*
+                      description: Texto livre para especificar categoria de bandeira marcada como 'OUTRAS'
+                      maxLenght: 50
+                paymentMethod:
+                  $ref: '#/components/schemas/CreditCardsAccountPaymentMethod'
+    CreditCardsAccountPaymentMethod:
+      type: object
+      description: Conjunto de informações relativas aos Meios de Pagamento da Conta de pagamento pós-paga
+      required:
+        - isCreditDebit
+        - type
+        - apresentation
+      properties:
+        isCreditDebit:
+          type: boolean
+          description: |
+            Indicador da conta de Pagamento pós paga ser Múltipla. "Cartões  denominados múltiplos possuem tanto a função crédito quanto a débito, devendo o proprietário do cartão, no momento de sua utilização, informar se o pagamento é na função crédito (que leva a um pagamento futuro, por meio de uma fatura do cartão de crédito) ou na função débito".
+            Fonte: Tipos de cartão - Banco Central do Brasilwww.bcb.gov.br › port ›folder_serie_I_tipos_de_
+            cartao
+        type:
+          $ref: '#/components/schemas/EnumCreditCardAccountPaymentMethodType/properties/apresentation'
+        apresentation:
+          $ref: '#/components/schemas/EnumCreditCardAccountPaymentMethodApresentation/properties/apresentation'
     CreditCardIdentification:
       type: object
       description: Informações de identificação do cartão de crédito
@@ -3444,7 +3747,7 @@ components:
           maxLength: 6
     CustomerContacts:
       type: object
-      description: Objeto agrupador formas de contactar o cliente
+      description: Conjunto de informações referentes às formas para contatar o cliente.
       required:
         - postalAddresses
         - phones
@@ -3707,19 +4010,18 @@ components:
     EconomicActivity:
       type: object
       required:
-        - mainCode
+        - code
+        - isMain
       properties:
-        mainCode:
+        code:
           type: string
           pattern: '^\d{7}$|^NA$'
           maxLength: 7
           description: |
             Traz o código do ramo da atividade principal da empresa consultada, segundo padrão CNAE (Classificação Nacional de Atividades Econômicas)
-        otherCodes:
-          type: string
-          pattern: '^\d{7}$'
-          maxLength: 7
-          description: 'Lista dos demais códigos relativos às demais atividades econômicas da empresa, segundo padrão CNAE (Classificação Nacional de Atividades Econômicas). De preenchimento obrigatório, se houver.'
+        isMain:
+          type: boolean
+          description: Informa se é o principal ramo de atividade
     ElectronicChannel:
       type: object
       properties:
@@ -4071,6 +4373,109 @@ components:
             Saldo bloqueado não disponível para utilização imediata, por motivo de bloqueio por compensação, ou bloqueio judicial
             Saldo disponível com aplicação automática - saldo disponível para utilização imediata, referente ao tipo de conta que remunera automaticamente o saldo em conta 
           example: SALDO_DISPONIVEL
+    EnumCreditCardAccountNetwork:
+      properties:
+        network:
+          type: string
+          description: |
+            Categoria de Bandeiras de Cartões de Crédito (Instituidor do arranjo de pagamento).
+            Bandeira é a detentora de todos os direitos e deveres da utilização da marca estampada no cartão, inclusive as bandeiras pertencentes aos emissores.
+          enum:
+            - VISA
+            - MASTERCARD
+            - AMERICAN_EXPRESS
+            - DINERS_CLUB
+            - HIPERCARD
+            - BANDEIRA_PROPRIA
+            - CHEQUE_ELETRONICO
+            - ELO
+            - OUTRAS
+          example: VISA
+    EnumCreditCardAccountPaymentMethodApresentation:
+      properties:
+        apresentation:
+          type: string
+          description: Enumera as formas de disponibilização do cartão (conta de pagamento pós-paga)
+          enum:
+            - FISICO
+            - VIRTUAL
+          example: VIRTUAL
+    EnumCreditCardAccountPaymentMethodType:
+      properties:
+        apresentation:
+          type: string
+          description: Enumera os tipos de cartão (conta de pagamento pós-paga)
+          enum:
+            - PRINCIPAL
+            - ADICIONAL
+          example: PRINCIPAL
+    EnumCreditCardAccountsConsolidationIndicator:
+      properties:
+        consolidationIndicator:
+          type: string
+          description: Indicador que permite informar se o valor do limite é consolidado ou individual.
+          enum:
+            - CONSOLIDADO
+            - INDIVIDUAL
+          example: CONSOLIDADO
+    EnumCreditCardAccountsLimitIndicator:
+      properties:
+        limitIndicator:
+          type: string
+          description: Indicador que permite informar se a operação de crédito é com limite ou com limite flexível
+          enum:
+            - COM_LIMITE
+            - LIMITE_FLEXIVEL
+          example: COM_LIMITE
+    EnumCreditCardAccountsLimitsLinesIndicator:
+      properties:
+        liminitsLineIndicator:
+          type: string
+          description: Indicador do tipo de limite
+          enum:
+            - LIMITE_CREDITO_TOTAL
+            - LIMITE_CREDITO_MODALIDADE_OPERACAO
+          example: LIMITE_CREDITO_TOTAL
+    EnumCreditCardAccountsNameLine:
+      properties:
+        nameLine:
+          type: string
+          description: Modalidade de operação - Lista de   Modalidades de Operação relacionadas às Contas de Pagamento Pós-Pagas
+          enum:
+            - CREDITO_A_VISTA
+            - SAQUE_CREDITO_BRASIL
+            - SAQUE_CREDITO_EXTERIOR
+            - EMPRESTIMO_CARTAO_CONSIGNADO
+            - OUTRAS
+          example: CREDITO_A_VISTA
+    EnumCreditCardAccountsType:
+      properties:
+        accountsType:
+          type: string
+          description: 'Categoria atribuída a um cartão de pagamento, sob uma certa denominação, que lhe agrega um conjunto de vantagens, diferenciando-o de acordo com o perfil do portador.'
+          enum:
+            - CLASSIC_NACIONAL
+            - CLASSIC_INTERNACIONAL
+            - GOLD
+            - PLATINUM
+            - INFINITE
+            - ELECTRON
+            - STANDARD_NACIONAL
+            - STANDARD_INTERNACIONAL
+            - ELETRONIC
+            - BLACK
+            - REDESHOP
+            - MAESTRO_MASTERCARD_MAESTRO
+            - GREEN
+            - BLUE
+            - BLUEBOX
+            - PROFISSIONAL_LIBERAL
+            - CHEQUE_ELETRONICO
+            - CORPORATIVO
+            - EMPRESARIAL
+            - COMPRAS
+            - OUTROS
+          example: CLASSIC_NACIONAL
     EnumCreditDebitIndicator:
       properties:
         creditDebitIndicator:
@@ -4330,6 +4735,71 @@ components:
           description: 'Nome social da pessoa natural, se houver. (aquele pelo qual travestis e transexuais se reconhecem, bem como são identificados por sua comunidade e em seu meio social, conforme Decreto Nº 51.180, de 14 de janeiro de 2010)'
           maxLength: 70
           pattern: \w*\W*
+    FinancialRelation:
+      type: object
+      description: 'Objeto que reúne as informações relativas ao processo de Relacionamento. Considera-se relacionamento as informações que permitam conhecer desde quando a pessoa consultada é cliente da instituição, bem como um indicador dos produtos e serviços que ela consome atualmente e seus representantes'
+      required:
+        - requestDateTime
+        - updateDateTime
+        - startDate
+        - serviceType
+        - procurators
+      properties:
+        requestDateTime:
+          type: string
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+          description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
+          maxLength: 20
+          example: '2020-07-21T08:30:00Z'
+        updateDateTime:
+          type: string
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
+          description: 'Data e hora da atualização do bloco de Relacionamento, conforme especificação RFC-3339, formato UTC.'
+          maxLength: 20
+          example: '2020-07-21T08:30:00Z'
+        startDate:
+          type: string
+          pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
+          description: Data de início de relacionamento com a Instituição Financeira. Deve trazer o menor valor entre a informação reportada ao BACEN pelo DOC 3040 e CCS.
+          example: '2020-07-21'
+          maxLength: 10
+        productsServices:
+          type: array
+          items:
+            type: object
+            required:
+              - type
+            properties:
+              productsServices:
+                type: object
+                properties:
+                  type:
+                    $ref: '#/components/schemas/EnumProductServiceType/properties/products'
+              procurators:
+                type: object
+                properties:
+                  type:
+                    $ref: '#/components/schemas/EnumProcuratorsType/properties/procurators'
+                  cpfNumber:
+                    type: string
+                    pattern: '^\d{11}$'
+                    description: 'Número completo do CPF. O CPF é o Cadastro de Pessoa natural. Ele é um documento feito pela Receita Federal e serve para identificar os contribuintes. O CPF é uma numeração com 11 dígitos, que só mudam por decisão judicial. O documento é emitido pela receita federal'
+                    example: '00000000000'
+                    maxLength: 11
+                  civilName:
+                    type: string
+                    pattern: \w*\W*
+                    description: 'Nome civil completo da pessoa natural. (Direito fundamental da pessoa, o nome civil é aquele atribuído à pessoa natural desde o registro de seu nascimento, com o qual será identificada por toda a sua vida, bem como após a sua morte)'
+                    maxLength: 70
+                  socialName:
+                    type: string
+                    pattern: \w*\W*
+                    description: 'Nome social da pessoa natural, se houver. (aquele pelo qual travestis e transexuais se reconhecem, bem como são identificados por sua comunidade e em seu meio social, conforme Decreto Nº 51.180, de 14 de janeiro de 2010)'
+                    maxLength: 70
+                description: Lista dos representantes. De preenchimento obrigatório se houver representante.
+            minItems: 1
+            maxItems: 14
+          description: Lista de produtos e serviços com contratos vigentes
     FinancingInterestRate:
       type: object
       properties:
@@ -4534,7 +5004,7 @@ components:
           example: '0.8700'
     InformedIncome:
       type: object
-      description: Objeto que agrupa as informações referentes à renda total informada
+      description: Conjunto de informações referentes à renda total informada
       required:
         - frequency
         - date
@@ -4552,34 +5022,16 @@ components:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          x-cds-type: CurrencyString
+          format: CurrencyString
           description: 'Moeda referente ao valor da renda, segundo modelo ISO-4217.'
           example: BRL
         date:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
           maxLength: 10
-          x-cds-type: DateString
+          format: DateString
           description: 'Data da renda, conforme especificação RFC-3339.'
           example: '2014-03-19'
-    InformedPatrimony:
-      type: object
-      description: Objeto que agrupa as informações referentes ao patrimônio informado
-      properties:
-        amount:
-          type: string
-          description: |
-            Valor do patrimônio informado. Expresso em valor monetário com 2 casas decimais.
-            "Patrimônio é o conjunto de bens vinculado a uma pessoa ou a uma entidade".
-          maxLength: 12
-          pattern: '^((\d{1,9}\.\d{2}){1}|NA)$'
-        currency:
-          type: string
-          pattern: '^(\w{3}){1}$'
-          maxLength: 3
-          x-cds-type: CurrencyString
-          description: 'Moeda referente ao valor do patrimônio, segundo modelo ISO-4217.'
-          example: BRL
     InformedRevenue:
       type: object
       description: Objeto que agrupa informações relativas ao faturamento da empresa informado
@@ -4600,7 +5052,7 @@ components:
           type: string
           pattern: '^(\w{3}){1}$'
           maxLength: 3
-          x-cds-type: CurrencyString
+          format: CurrencyString
           description: 'Moeda referente ao valor da faturamento, segundo modelo ISO-4217.'
           example: BRL
         year:
@@ -5025,7 +5477,7 @@ components:
         expirationDate:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-          x-cds-type: DateString
+          format: DateString
           maxLength: 10
           description: 'Data de validade do documento informado, conforme especificação RFC-3339.'
           example: '2014-03-19'
@@ -5042,19 +5494,6 @@ components:
           description: Lista que traz relação de documentos complementares de pessoas com nacionalidade diferente de brasileira
           items:
             $ref: '#/components/schemas/NationalityComplementaryDocuments'
-    Occupation:
-      type: object
-      required:
-        - mainCodeType
-        - codeDescription
-      properties:
-        mainCodeType:
-          $ref: '#/components/schemas/EnumOccupationMainCodeType/properties/mainCodeType'
-        codeDescription:
-          type: string
-          pattern: \w*\W*
-          maxLength: 100
-          description: Campo livre de preenchimento obrigatório. Traz o código da ocupação ou o descritivo da ocupação.
     PartiesParticipation:
       type: object
       description: Objeto relativo às informações de composição da participação societária
@@ -5062,6 +5501,8 @@ components:
         - type
         - civilName
         - shareholding
+        - documentType
+        - documentNumber
       properties:
         type:
           $ref: '#/components/schemas/EnumPartiesParticipationType/properties/type'
@@ -5081,7 +5522,7 @@ components:
           type: string
           maxLength: 10
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$|^NA$'
-          x-cds-type: DateString
+          format: DateString
           description: 'Data de início da participação, conforme especificação RFC-3339.'
         shareholding:
           type: string
@@ -5090,36 +5531,27 @@ components:
           description: |
             Percentual de participação societária. Só deve ser informada se igual ou superior a 25%. Ex: 0.25 (O valor ao lado representa 25%. O valor '1 'representa 100%)
             A apuração pode acontecer com até 2 casas decimais.O preenchimento deve respeitar as 2 casas decimais, mesmo que venham preenchidas com zeros
-        document:
-          $ref: '#/components/schemas/PartiesParticipationDocument'
-    PartiesParticipationDocument:
-      type: object
-      description: Objeto que agrupa informações relativas ao documento da parte envolvida
-      required:
-        - type
-        - number
-      properties:
-        type:
+        documentType:
           $ref: '#/components/schemas/EnumPartiesParticipationDocumentType/properties/type'
-        number:
+        documentNumber:
           type: string
           maxLength: 20
           pattern: \w*\W*
           description: Número do documento informado. Campo Texto Livre para preencher número e dígito do documento se houver
-        additionalInfo:
+        documentAdditionalInfo:
           type: string
           maxLength: 100
           pattern: \w*\W*
           description: 'Campo livre, de preenchimento obrigatório quando o documento informado tiver informações complementares relevantes para a sua identificação'
-        country:
+        documentCountry:
           type: string
           description: País de emissão do documento. Código do pais de acordo com o código “alpha3” do ISO-3166.
           maxLength: 3
           example: CAN
-        expirationDate:
+        documentExpirationDate:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-          x-cds-type: DateString
+          format: DateString
           maxLength: 10
           description: 'Data de validade do documento informado, conforme especificação RFC-3339.'
           example: '2014-03-19'
@@ -5411,87 +5843,54 @@ components:
           items:
             $ref: '#/components/schemas/PersonalCreditCard'
           minItems: 1
-    PersonalCustomer:
+    PersonalFinancialRelationBrand:
+      type: object
+      description: Objeto que define a Organização controladora do grupo de instituições financeiras
+      required:
+        - name
+        - companies
+      properties:
+        name:
+          type: string
+          pattern: \w*\W*
+          maxLength: 80
+          description: 'Nome da Marca reportada pelo participante do Open Banking. O conceito a que se refere a ''marca'' é em essência uma promessa da empresa em fornecer uma série específica de atributos, benefícios e serviços uniformes aos clientes'
+          example: Organização A
+        companies:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonalFinancialRelationCompany'
+          minItems: 1
+          description: Companies traz uma lista de todas as instituições da Marca
+    PersonalFinancialRelationCompany:
       type: object
       required:
-        - companies
+        - name
+        - cnpjNumber
+        - personalCustomers
+      properties:
+        name:
+          type: string
+          maxLength: 80
+          pattern: \w*\W*
+          description: Nome da marca selecionada pela Organização
+          example: Organização A
+        cnpjNumber:
+          type: string
+          maxLength: 14
+          pattern: '\d{14}|^NA$'
+          description: Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.
+          example: '00000000000100'
+        personalCustomers:
+          $ref: '#/components/schemas/PersonalFinancialRelationCustomers'
+    PersonalFinancialRelationCustomers:
+      type: object
+      description: Conjunto de informações Cadastrais do Cliente Pessoa natural
+      required:
         - financialRelation
       properties:
-        companies:
-          required:
-            - name
-            - cnpjNumber
-            - financialRelation
-          type: object
-          properties:
-            name:
-              type: string
-              maxLength: 80
-              pattern: \w*\W*
-              description: Nome da marca selecionada pela Organização
-              example: Organização A
-            cnpjNumber:
-              type: string
-              maxLength: 14
-              pattern: '\d{14}|^NA$'
-              description: Número completo do CNPJ da instituição responsável pelo Cadastro - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.
-              example: 00.000.000/0001-00
-            financialRelation:
-              type: object
-              description: 'Objeto que reúne as informações relativas ao processo de Relacionamento. Considera-se relacionamento as informações que permitam conhecer desde quando a pessoa consultada é cliente da instituição, bem como um indicador dos produtos e serviços que ela consome atualmente e seus representantes'
-              required:
-                - requestDateTime
-                - updateDateTime
-                - startDate
-                - serviceType
-                - procurators
-              properties:
-                requestDateTime:
-                  type: string
-                  pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                  description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
-                  maxLenght: 20
-                  example: '2020-07-21T08:30:00Z'
-                updateDateTime:
-                  type: string
-                  pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
-                  description: 'Data e hora da atualização do bloco de Relacionamento, conforme especificação RFC-3339, formato UTC.'
-                  maxLenght: 20
-                  example: '2020-07-21T08:30:00Z'
-                startDate:
-                  type: string
-                  pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-                  description: Data de início de relacionamento com a Instituição Financeira. Deve trazer o menor valor entre a informação reportada ao BACEN pelo DOC 3040 e CCS.
-                  example: '2020-07-21T08:30:00Z'
-                  maxLenght: 10
-                productsServices:
-                  type: array
-                  items:
-                    type: object
-                    required:
-                      - procuratorsType
-                    properties:
-                      productService:
-                        $ref: '#/components/schemas/EnumProductServiceType/properties/products'
-                      procurators:
-                        type: object
-                        properties:
-                          procuratorsType:
-                            $ref: '#/components/schemas/EnumProcuratorsType/properties/procurators'
-                          civilName:
-                            type: string
-                            pattern: \w*\W*
-                            description: 'Nome civil completo da pessoa natural. (Direito fundamental da pessoa, o nome civil é aquele atribuído à pessoa natural desde o registro de seu nascimento, com o qual será identificada por toda a sua vida, bem como após a sua morte)'
-                            maxLenght: 70
-                          socialName:
-                            type: string
-                            pattern: \w*\W*
-                            description: 'Nome social da pessoa natural, se houver. (aquele pelo qual travestis e transexuais se reconhecem, bem como são identificados por sua comunidade e em seu meio social, conforme Decreto Nº 51.180, de 14 de janeiro de 2010)'
-                            maxLenght: 70
-                        description: Lista dos representantes. De preenchimento obrigatório se houver representante.
-                    minItems: 1
-                    maxItems: 14
-                  description: Lista de produtos e serviços com contratos vigentes
+        financialRelation:
+          $ref: '#/components/schemas/FinancialRelation'
     PersonalFinancing:
       type: object
       required:
@@ -5604,7 +6003,7 @@ components:
           minItems: 1
     PersonalIdentification:
       type: object
-      description: Objeto agrupador das informações relativas a Identificação ou seja a ação e o efeito de identificar de forma única a pessoa natural através de seus dados cadastrais.
+      description: Conjunto de informações relativas a Identificação ou seja a ação e o efeito de identificar de forma única a pessoa natural através de seus dados cadastrais.
       required:
         - requestDateTime
         - updateDateTime
@@ -5622,14 +6021,14 @@ components:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
           description: 'Data e hora da consulta, conforme especificação RFC-3339, formato UTC.'
-          x-cds-type: DateTimeString
+          format: DateTimeString
           maxLength: 20
           example: '2020-07-21T08:30:00Z'
         updateDateTime:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)Z$'
           description: 'Data e hora da atualização do bloco, conforme especificação RFC-3339'
-          x-cds-type: DateTimeString
+          format: DateTimeString
           maxLength: 20
           example: '2020-07-21T08:30:00Z'
         cpfNumber:
@@ -5654,7 +6053,7 @@ components:
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
           maxLength: 10
           description: 'Data vigência do Passaporte, conforme especificação RFC-3339.'
-          x-cds-type: DateString
+          format: DateString
           example: '2014-03-19'
         otherDocuments:
           type: array
@@ -5679,7 +6078,7 @@ components:
         birthDate:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-          x-cds-type: DateString
+          format: DateString
           maxLength: 10
           description: 'Data de nascimento, conforme especificação RFC-3339'
           example: '2014-03-19'
@@ -5718,7 +6117,7 @@ components:
       required:
         - name
         - cnpjNumber
-        - personalLoans
+        - personalCustomers
       properties:
         name:
           description: 'Nome da Instituição, pertencente à Marca, responsável pelo Cadastro.'
@@ -5736,7 +6135,7 @@ components:
           $ref: '#/components/schemas/PersonalIdentificationCustomers'
     PersonalIdentificationCustomers:
       type: object
-      description: Objeto que agrupa as informações Cadastrais do Cliente Pessoa natural
+      description: Conjunto de informações Cadastrais do Cliente Pessoa natural
       required:
         - identification
       properties:
@@ -5744,12 +6143,24 @@ components:
           $ref: '#/components/schemas/PersonalIdentification'
     PersonalInformedPatrimony:
       type: object
-      description: Objeto que agrupa as informações referentes ao patrimônio informado
+      description: Conjunto de informações referentes ao patrimônio informado
       required:
-        - year
-      allOf:
-        - $ref: '#/components/schemas/InformedPatrimony'
+        - amount
       properties:
+        amount:
+          type: string
+          description: |
+            Valor do patrimônio informado. Expresso em valor monetário com 2 casas decimais.
+            "Patrimônio é o conjunto de bens vinculado a uma pessoa ou a uma entidade".
+          maxLength: 12
+          pattern: '^((\d{1,9}\.\d{2}){1}|NA)$'
+        currency:
+          type: string
+          pattern: '^(\w{3}){1}$'
+          maxLength: 3
+          format: CurrencyString
+          description: 'Moeda referente ao valor do patrimônio, segundo modelo ISO-4217.'
+          example: BRL
         year:
           type: string
           pattern: '^\d{4}$'
@@ -6022,22 +6433,29 @@ components:
           maxLength: 2
           pattern: \w*\W*
           description: Dígito verificador do documento informado. De preenchimento obrigatório se o documento informado tiver dígito verificador
+        additionalInfo:
+          type: string
+          maxLength: 50
+          pattern: \w*\W*
+          description: |
+            Campo livre, de preenchimento obrigatório quando o documento informado tiver informações complementares. p.ex. RG, este campo deve trazer: "SSP-SP' para RGs emitidos no estado de São Paulo - SP
         expirationDate:
           type: string
           pattern: '^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])$'
-          x-cds-type: DateString
+          format: DateString
           maxLength: 10
           description: 'Data de validade do documento informado, conforme especificação RFC-3339.'
           example: '2014-03-19'
     PersonalQualification:
       type: object
-      description: 'Objeto que reúne as informações relativas ao processo de qualificação. Considera-se qualificação as informações que permitam as instituições apreciar, avaliar, caracterizar e classificar o cliente com a finalidade de conhecer o seu perfil de risco e sua capacidade econômico-financeira'
+      description: 'Conjunto de informações relativas ao processo de qualificação. Considera-se qualificação as informações que permitam as instituições apreciar, avaliar, caracterizar e classificar o cliente com a finalidade de conhecer o seu perfil de risco e sua capacidade econômico-financeira'
       required:
         - requestDateTime
         - updateDateTime
         - informedIncome
         - informedPatrimony
-        - occupation
+        - occupationCode
+        - occupationDescription
       properties:
         requestDateTime:
           type: string
@@ -6055,8 +6473,13 @@ components:
           $ref: '#/components/schemas/InformedIncome'
         informedPatrimony:
           $ref: '#/components/schemas/PersonalInformedPatrimony'
-        occupation:
-          $ref: '#/components/schemas/Occupation'
+        occupationCode:
+          $ref: '#/components/schemas/EnumOccupationMainCodeType/properties/mainCodeType'
+        occupationDescription:
+          type: string
+          pattern: \w*\W*
+          maxLength: 100
+          description: 'Campo livre, de preenchimento obrigatório. Traz o código da ocupação ou o descritivo da ocupação, se selecionada a opção ''OUTRO'''
     PersonalQualificationBrand:
       type: object
       description: Objeto que define a Organização controladora do grupo de instituições financeiras
@@ -6081,7 +6504,7 @@ components:
       required:
         - name
         - cnpjNumber
-        - personalLoans
+        - personalCustomers
       properties:
         name:
           description: 'Nome da Instituição, pertencente à Marca, responsável pelo Cadastro.'
@@ -6095,19 +6518,11 @@ components:
           pattern: '^(\d{14})$|^NA$'
           maxLength: 14
           example: '50685362000135'
-        urlComplementaryList:
-          description: |
-            URL do link que conterá a lista complementar com os nomes e CNPJs agrupados sob o mesmo cnpjNumber. Os contidos nessa lista possuem as mesmas características para produtos e serviços. Endereço eletrônico de acesso ao canal. Será obrigatoriamente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada.
-            Restrição: Será obrigatorimente preenchido se houver lista complementar com os nomes e CNPJs a ser disponibilizada
-          type: string
-          pattern: \w*\W*
-          maxLength: 1024
-          example: 'https://empresadaorganizacaoa.com/complementarylist'
         personalCustomers:
           $ref: '#/components/schemas/PersonalQualificationCustomers'
     PersonalQualificationCustomers:
       type: object
-      description: Objeto que agrupa as informações Cadastrais do Cliente Pessoa natural
+      description: Conjunto de informações Cadastrais do Cliente Pessoa natural
       required:
         - qualification
       properties:
@@ -7151,6 +7566,24 @@ components:
         meta:
           totalRecords: 1
           totalPages: 1
+    ResponseBusinessCustomersFinancialRelation:
+      type: object
+      required:
+        - data
+        - links
+        - meta
+      properties:
+        data:
+          type: object
+          required:
+            - brand
+          properties:
+            brand:
+              $ref: '#/components/schemas/BusinessFinancialRelationBrand'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
     ResponseBusinessCustomersIdentification:
       type: object
       required:
@@ -8949,6 +9382,24 @@ components:
         meta:
           totalRecords: 1
           totalPages: 1
+    ResponsePersonalCustomersFinancialRelation:
+      type: object
+      required:
+        - data
+        - links
+        - meta
+      properties:
+        data:
+          type: object
+          required:
+            - brand
+          properties:
+            brand:
+              $ref: '#/components/schemas/PersonalFinancialRelationBrand'
+        links:
+          $ref: '#/components/schemas/Links'
+        meta:
+          $ref: '#/components/schemas/Meta'
     ResponsePersonalCustomersIdentification:
       type: object
       required:
